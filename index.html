@@ -1,73 +1,106 @@
-//I want you to act as a web developer expert. I want you to create for me Bryce’s Bait and Tackle company’s website. The website has a colourful background, home, product, and buttons in the header, image and description of Bryce’s Bair and Tackle. Make it look like a video game where each product is an upgrade. Make the website look nice. I need all the HTML, CSS, and JavaScript in one file.
-
-<!DOCTYPE html>
+\<!DOCTYPE html>
 <html>
-  <head>
+<head>
     <title>Bryce's Bait and Tackle</title>
     <style>
-      body {
-        background-color: #f1c40f;
-      }
-
-      header {
-        background-color: #3498db;
-        padding: 10px;
-      }
-
-      h1 {
-        color: white;
-      }
-
-      .product {
-        display: inline-block;
-        margin-top: 10px;
-        margin-right: 10px;
-        background-color: white;
-        border: 1px solid black;
-        padding: 10px;
-      }
-
-      img {
-        width: 200px;
-      }
+        body {
+            background-color: #f1c40f;
+            font-family: 'Arial', sans-serif;
+        }
+        header {
+            background-color: #3498db;
+            padding: 10px;
+            text-align: center;
+        }
+        nav a {
+            color: white;
+            padding: 10px;
+            text-decoration: none;
+        }
+        h1, h2 {
+            color: white;
+        }
+        .product {
+            display: inline-block;
+            margin: 10px;
+            background-color: white;
+            border: 2px solid black;
+            padding: 10px;
+            width: 200px;
+            text-align: center;
+        }
+        img {
+            width: 100%;
+        }
+        button {
+            background-color: #2ecc71;
+            border: none;
+            color: white;
+            padding: 5px 10px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            cursor: pointer;
+        }
+        form {
+            background-color: white;
+            padding: 20px;
+            margin-top: 20px;
+        }
+        input, textarea {
+            width: 100%;
+            padding: 8px;
+            margin: 4px 0;
+            box-sizing: border-box;
+        }
     </style>
-  </head>
-  <body>
+</head>
+<body>
     <header>
-      <h1>Bryce's Bait and Tackle</h1>
-      <nav>
-        <a href="#home">Home</a>
-        <a href="#products">Products</a>
-      </nav>
+        <h1>Bryce's Bait and Tackle</h1>
+        <nav>
+            <a href="#home">Home</a>
+            <a href="#products">Products</a>
+        </nav>
     </header>
     <main>
-      <section id="home">
-        <h2>Welcome to Bryce's Bait and Tackle!</h2>
-        <p>We have everything you need for your next fishing trip.</p>
-      </section>
-      <section id="products">
-        <div class="product">
-          <img src="https://via.placeholder.com/200" alt="Fishing Rod" />
-          <h3>Fishing Rod</h3>
-          <p>The best fishing rod you can buy. Cast your line further than ever before.</p>
-          <button>Upgrade</button>
-        </div>
-        <div class="product">
-          <img src="https://via.placeholder.com/200" alt="Fishing Reel" />
-          <h3>Fishing Reel</h3>
-          <p>Reel in the big one with this top-of-the-line fishing reel.</p>
-          <button>Upgrade</button>
-        </div>
-        <div class="product">
-          <img src="https://via.placeholder.com/200" alt="Fishing Lure" />
-          <h3>Fishing Lure</h3>
-          <p>Attract more fish with this realistic fishing lure.</p>
-          <button>Upgrade</button>
-        </div>
-      </section>
+        <section id="home">
+            <h2>Welcome to Bryce's Bait and Tackle!</h2>
+            <p>We have everything you need for your next fishing trip.</p>
+        </section>
+        <section id="products">
+            <!-- Products will be dynamically added here by JavaScript -->
+        </section>
+        <form action="#" method="post">
+            <h3>Contact Us</h3>
+            <input type="text" name="name" placeholder="Your Name" required>
+            <input type="email" name="email" placeholder="Your Email" required>
+            <textarea name="message" placeholder="Your Message" required></textarea>
+            <button type="submit">Send</button>
+        </form>
     </main>
-  </body>
-</html>
 
-//Challenge 2
-//Create a form that takes
+    <script>
+        const products = [
+            { name: "Fishing Rod", image: "https://via.placeholder.com/200", description: "The best fishing rod you can buy. Cast your line further than ever before." },
+            { name: "Fishing Reel", image: "https://via.placeholder.com/200", description: "Reel in the big one with this top-of-the-line fishing reel." },
+            { name: "Fishing Lure", image: "https://via.placeholder.com/200", description: "Attract more fish with this realistic fishing lure." }
+        ];
+
+        const productsContainer = document.getElementById('products');
+        products.forEach(product => {
+            const productDiv = document.createElement('div');
+            productDiv.className = 'product';
+            productDiv.innerHTML = `
+                <img src="${product.image}" alt="${product.name}" />
+                <h3>${product.name}</h3>
+                <p>${product.description}</p>
+                <button onclick="alert('Upgrade to ${product.name}!')">Upgrade</button>
+            `;
+            productsContainer.appendChild(productDiv);
+        });
+    </script>
+</body>
+</html>
